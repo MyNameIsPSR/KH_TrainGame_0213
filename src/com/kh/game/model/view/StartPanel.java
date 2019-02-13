@@ -64,6 +64,7 @@ public class StartPanel extends CommonPanel {
 		} else if(e.getSource() == btnLoad) {
 			/*GameLoad load = new GameLoad();
 			load.load(sp.p, sp, sp.mf);*/
+			new GameLoad().load(super.getP(), startPanel, super.getMf());
 
 		}
 	} //end method

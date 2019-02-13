@@ -37,7 +37,7 @@ public class GameMain extends CommonPanel{
 						" 1. 문제를 읽고 맞으면 O, 틀리면 X를 눌러주세요.\n"
 						+ " 2. 만약 5문제 이상 틀렸다면 문을 통과할 수 없습니다.\n"
 						+ " 3. 게임에 실패할 시 단백질 양갱이 하나 감소 됩니다. \n"
-						+ " 4. 양갱을 모두 소비하면 Game Out!\n"
+						+ " 4. 양갱을 모두 소비하면 Game Over!\n"
 						+ "\n 부디 좋은 결과가 있기를 기도합니다.";
 				break;
 			case 2:
@@ -48,7 +48,13 @@ public class GameMain extends CommonPanel{
 			case 3:
 				title = "틀린 코드 찾기";
 				imgAdd = "images/틀린코드찾기.png";
-				description = "설명";
+				description = "\n" + 
+						" 1. 중앙의 코드를 보고 틀린부분 3곳 을 클릭하세요.\n"
+						+ " 2. 오답을 세번클릭시 통과할 수 없습니다.\n"
+						+ " 3. 주어진 시간안에 틀린부분을 모두 찾지 않으면 통과할 수 없습니다.\n"
+						+ " 4. 게임에 실패할 시 단백질 양갱이 하나 감소 됩니다. \n"
+						+ " 5. 양갱을 모두 소비하면 Game Over!\n"
+						+ "\n 부디 좋은 결과가 있기를 기도합니다.";
 				break;
 		}
 		

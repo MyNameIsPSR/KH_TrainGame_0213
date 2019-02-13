@@ -18,7 +18,7 @@ public class TimeLimiter extends JPanel{
 	public JLabel tLabel = null;
 	public TimeLimiter timer = this;
 
-	public TimeLimiter(int maxTime, DifferenceSpot asd) {
+	public TimeLimiter(int maxTime, DifferenceSpot dif) {
 		this.setBounds(10, 10, 60, 50);
 		tLabel = new JLabel("" + this.maxTime);
 		tLabel.setSize(60, 40);
@@ -30,9 +30,16 @@ public class TimeLimiter extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				if(timer.maxTime >= 0) {
 					tLabel.setText("" +(timer.maxTime--));
+					if(dif.getLife() == 0) {
+						timer1.stop();
+					}
+					if(dif.spot1 == true && dif.spot2 == true && dif.spot3 == true) {
+						timer1.stop(); 
+					}
 				}else {
 					timer1.stop();
-					asd.getButton2().setVisible(true);
+					dif.getButton2().setVisible(true);
+					dif.getMunjae().setVisible(false);
 				}
 
 			}

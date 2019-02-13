@@ -8,11 +8,11 @@ import javax.swing.ImageIcon;
 public class Player implements Serializable{
 	private int life;
 	private String name;
-	private int Stage = 0;
+	private int level = 0;
 	
 	public Player() {} 
 	
-	public Player(String name, Image charcImg) {
+	public Player(String name) {
 		life = 3;
 		this.name = name;
 	}
@@ -36,12 +36,12 @@ public class Player implements Serializable{
 	}
 
 
-	public int getStage() {
-		return Stage;
+	public int getLevel() {
+		return level;
 	}
 
-	public void setStage(int stage) {
-		Stage = stage;
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 

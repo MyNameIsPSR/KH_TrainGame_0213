@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.JPanel;
 
+import com.kh.game.model.view.ChangePanel;
 import com.kh.game.model.view.Player;
 
 public class GameSave {
@@ -18,11 +19,11 @@ public class GameSave {
 		//세이브 기능
 		//전달받은 플레이어 객체와 전달받은 패널을 저장
 		try(ObjectOutputStream save = new ObjectOutputStream(new FileOutputStream("player.dat"));) {
-
 			
 			save.writeObject(p);
 			save.writeObject(panel);
 			save.flush();
+			
 
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block

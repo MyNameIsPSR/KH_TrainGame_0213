@@ -61,11 +61,15 @@ public class OXPlay extends CommonPanel{
 		jtf.setForeground(Color.WHITE);
 		jtf.setSize(800,50);
 		jtf.setLocation(40, 40);
+		jtf.setHorizontalAlignment(JTextField.RIGHT);
 		
 		jta = new JTextArea();
 		jta.setSize(800, 300);
 		jta.setLocation(40, 100);
 		jta.setEditable(false);
+		jta.setLineWrap(true);
+		jta.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		
 		
 		//호출 될 때 마다 q를 jta에 셋팅함 
 		System.out.println(index + "문제가 출제되었습니다.");

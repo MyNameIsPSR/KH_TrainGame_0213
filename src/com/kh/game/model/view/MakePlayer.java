@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.kh.game.controller.GameSave;
+
 
 public class MakePlayer extends CommonPanel {
 	
@@ -80,6 +82,7 @@ public class MakePlayer extends CommonPanel {
 		nameTf.setBounds(400, 220, 400, 50);
 		//파일 입출력(수정)
 		//super.setName(nameTf.getText());
+		super.getP().setName(nameTf.getText());
 
 		//버튼 추가
 		btnStart = new JButton(" Next > ");
@@ -88,7 +91,7 @@ public class MakePlayer extends CommonPanel {
 		btnStart.setForeground(Color.WHITE);
 		btnStart.setFont(new Font("굴림체",Font.BOLD,15));
 		btnStart.setContentAreaFilled(false);
-
+		
 
 		//패널에 추가
 		this.add(characImg); 
@@ -119,6 +122,7 @@ public class MakePlayer extends CommonPanel {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}*/
+			new GameSave().save(super.getP(), makePlayer);
 			ChangePanel.changePanel(super.getMf(), makePlayer, 
 					new Prolog(super.getMf(), super.getP()));
 		}

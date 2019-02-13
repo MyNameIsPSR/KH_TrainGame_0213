@@ -1,6 +1,7 @@
 package com.kh.game.controller;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import com.kh.game.model.view.ChangePanel;
 import com.kh.game.model.view.CommonPanel;
@@ -30,6 +36,9 @@ public class DifferenceSpot extends CommonPanel{
 	public static boolean spot3 = false;
 	private JLabel munjae;
 	private JLabel result;
+	private JLabel life1;
+	private JLabel life2;
+	private JLabel life3;
 	private int [] x;
 	private int [] y;
 	private int xRange = 40;
@@ -47,7 +56,7 @@ public class DifferenceSpot extends CommonPanel{
 		super(mf, p);
 
 		CustomMouseAdapter cma = new CustomMouseAdapter();
-		timer = new TimeLimiter(5, this);
+		timer = new TimeLimiter(60, this);
 
 		//this.p.setStage(3);
 		int random = (int)(Math.random()*3)+1;
@@ -82,6 +91,40 @@ public class DifferenceSpot extends CommonPanel{
 		munjae.setLocation(150, 70);
 		munjae.setSize(600, 350);
 		munjae.addMouseListener(cma);
+		
+		ImageIcon life = new ImageIcon("codeImg/life.png");
+		
+		life1 = new JLabel(life);
+		life1.setSize(20,20);
+		life1.setLocation(800, 20);
+		
+		life2 = new JLabel(life);
+		life2.setSize(20,20);
+		life2.setLocation(825, 20);
+		
+		life3 = new JLabel(life);
+		life3.setSize(20,20);
+		life3.setLocation(850, 20);
+		
+		
+		
+		JTextPane text = new JTextPane();
+		text.setBounds(19, 300, 100, 150);
+		text.setVisible(false);
+		text.setEditable(false);
+		
+		StyledDocument doc = text.getStyledDocument(); 
+		SimpleAttributeSet center = new SimpleAttributeSet(); 
+		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER); 
+		doc.setParagraphAttributes(0, doc.getLength(), center, false); 
+		
+		if(random == 1) {
+			text.setText("자동완성에 너무 익숙해진거 아닌가?");
+		}else if(random == 2) {
+			text.setText("try문과 while문을 다시공부해봐");
+		}else {
+			text.setText("길이를 아는 방법은 여러가지가 있지");
+		}
 
 		npc = new JButton("NPC자리");
 		npc.setSize(100, 100);
@@ -90,11 +133,7 @@ public class DifferenceSpot extends CommonPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == npc) {
-					JTextArea text = new JTextArea();
-					text.setText("안녕");
-					text.setLocation(19, 300);
-					ds.add(text);
-
+					text.setVisible(true);
 				}
 
 			}
@@ -112,7 +151,12 @@ public class DifferenceSpot extends CommonPanel{
 		button2.setVisible(false);
 		button2.addActionListener(this);
 
-
+		
+		
+		this.add(life1);
+		this.add(life2);
+		this.add(life3);
+		this.add(text);
 		this.add(timer);
 		this.add(panel2);
 		this.add(npc);
@@ -142,6 +186,7 @@ public class DifferenceSpot extends CommonPanel{
 			save.save(dif.p, dif);*/
 			/*ChangePanel.changePanel(mf, ds, 
 					new Talk3(mf, dif.p));*/
+			new GameManager(super.getMf(), 3, false, super.getP(), this);
 		}
 	} //end method
 
@@ -179,7 +224,13 @@ public class DifferenceSpot extends CommonPanel{
 				result.setText("정답입니다!!");
 			}else {
 				life--;
-				result.setText("틀렸습니다...");
+				if(life == 2) {
+					life1.setVisible(false);
+				}else if(life == 1) {
+					life2.setVisible(false);
+				}else if(life == 0) {
+					life3.setVisible(false);
+				}
 			}
 
 			if(spot1 == true && spot2 == true && spot3 == true) {
@@ -187,6 +238,7 @@ public class DifferenceSpot extends CommonPanel{
 			}
 			if(life == 0) {
 				button2.setVisible(true);
+				munjae.setVisible(false);
 			}
 
 
@@ -201,8 +253,17 @@ public class DifferenceSpot extends CommonPanel{
 	public JButton getButton2() {
 		return button2;
 	}
+	
+	public int getLife() {
+		return life;
+	}
+	
+	public JLabel getMunjae() {
+		return munjae;
+	}
 
 }
+
 
 
 

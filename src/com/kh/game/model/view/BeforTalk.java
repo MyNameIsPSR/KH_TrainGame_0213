@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.game.controller.GameSave;
+
 public class BeforTalk extends CommonPanel{
 	
 	private JPanel beforTalk;
@@ -18,7 +20,12 @@ public class BeforTalk extends CommonPanel{
 
 	public BeforTalk(MainFrame mf, Player p, int level) {
 		super(mf, p);
-
+		
+		//각 열차 칸 집입시 저장
+		super.getP().setLevel(level);
+		new GameSave().save(super.getP(), beforTalk);
+		
+		
 		this.beforTalk = this;
 		this.level = level;
 		
@@ -45,7 +52,7 @@ public class BeforTalk extends CommonPanel{
 				break;
 			case 3: 
 				imgAdd = "images/beforLevelThree.png";
-				btnChar.setBounds(350, 180, 100, 260);
+				btnChar.setBounds(350, 180, 100, 260); 
 				break;
 		} //end switch
 		

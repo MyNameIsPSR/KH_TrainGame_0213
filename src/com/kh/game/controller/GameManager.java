@@ -90,7 +90,8 @@ public class GameManager {
 				ChangePanel.changePanel(mf, isPt, 
 						new BeforTalk(mf, p, 1));
 				//수정!양갱 한개 뺏기
-				
+				//양갱 한개 뺏기 추가
+				p.setLife(p.getLife()-1);
 			}
 			break;
 		case 2:
@@ -101,6 +102,8 @@ public class GameManager {
 				ChangePanel.changePanel(mf, isPt, 
 						new BeforTalk(mf, p, 2));
 				//수정! 양갱 한 개 뺏기
+				//양갱 한개 뺏기 추가
+				p.setLife(p.getLife()-1);
 			}
 			break;
 		case 3:
@@ -110,6 +113,8 @@ public class GameManager {
 				ChangePanel.changePanel(mf, isPt, 
 						new BeforTalk(mf, p, 3));
 				//수정! 양갱 한 개 뺏기
+				//양갱 한개 뺏기 추가
+				p.setLife(p.getLife()-1);
 			}
 			break;
 		} //end switch
