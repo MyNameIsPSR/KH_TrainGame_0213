@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.game.controller.GameSave;
+
 
 public class Prolog extends CommonPanel{
 
