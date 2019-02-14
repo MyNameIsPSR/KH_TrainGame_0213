@@ -86,12 +86,15 @@ public class GameManager {
 			if(isPass) { //1단계에서 통과했을 때 2단계 문지기 화면으로 넘어가기
 				ChangePanel.changePanel(mf, isPt, 
 						new BeforTalk(mf, p, 2));
-			} else { //불통했을 때 1단계 문지기 화면 으로 가기
-				ChangePanel.changePanel(mf, isPt, 
-						new BeforTalk(mf, p, 1));
+			} else { //불통했을 때 1단계 문지기 화면 으로 가기				
 				//수정!양갱 한개 뺏기
-				//양갱 한개 뺏기 추가
 				p.setLife(p.getLife()-1);
+				if(p.getLife() != 0) {
+					ChangePanel.changePanel(mf, isPt, 
+							new BeforTalk(mf, p, 1));
+				}else {
+					//라이프가 0이되면 게임오버 화면 띄우기 추가예정
+				}
 			}
 			break;
 		case 2:
@@ -99,22 +102,28 @@ public class GameManager {
 				ChangePanel.changePanel(mf, isPt, 
 						new BeforTalk(mf, p, 3));
 			} else { //2단계에서 불통했을 때 2단계 문지기 화면으로 넘어가기
-				ChangePanel.changePanel(mf, isPt, 
-						new BeforTalk(mf, p, 2));
-				//수정! 양갱 한 개 뺏기
-				//양갱 한개 뺏기 추가
+				//수정!양갱 한개 뺏기
 				p.setLife(p.getLife()-1);
+				if(p.getLife() != 0) {
+					ChangePanel.changePanel(mf, isPt, 
+							new BeforTalk(mf, p, 2));
+				}else {
+					//라이프가 0이되면 게임오버 화면 띄우기 추가예정
+				}
 			}
 			break;
 		case 3:
 			if(isPass) { //3단계에서 통과 했을 때
 				
 			} else { //3단계 불통 했을 때 3단계 문지기 화면으로 넘어가기
-				ChangePanel.changePanel(mf, isPt, 
-						new BeforTalk(mf, p, 3));
-				//수정! 양갱 한 개 뺏기
-				//양갱 한개 뺏기 추가
+				//수정!양갱 한개 뺏기
 				p.setLife(p.getLife()-1);
+				if(p.getLife() != 0) {
+					ChangePanel.changePanel(mf, isPt, 
+							new BeforTalk(mf, p, 3));
+				}else {
+					//라이프가 0이되면 게임오버 화면 띄우기 추가예정
+				}
 			}
 			break;
 		} //end switch
