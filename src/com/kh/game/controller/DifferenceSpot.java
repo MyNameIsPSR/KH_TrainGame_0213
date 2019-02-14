@@ -7,7 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -109,9 +116,10 @@ public class DifferenceSpot extends CommonPanel{
 		
 		
 		JTextPane text = new JTextPane();
-		text.setBounds(19, 300, 100, 150);
+		text.setBounds(5, 300, 130, 150);
 		text.setVisible(false);
 		text.setEditable(false);
+		text.setBackground(new Color(100, 150, 100, 100));
 		
 		StyledDocument doc = text.getStyledDocument(); 
 		SimpleAttributeSet center = new SimpleAttributeSet(); 
@@ -223,6 +231,15 @@ public class DifferenceSpot extends CommonPanel{
 				munjae.repaint();
 				result.setText("정답입니다!!");
 			}else {
+				File file = new File("C:\\Users\\user2\\git\\KH_TrainGame_0213\\직박구리\\sound_button_wrong.wav");
+				try {
+					AudioInputStream beep = AudioSystem.getAudioInputStream(file);
+					Clip clip = AudioSystem.getClip();
+					clip.open(beep);
+					clip.start();
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+					e1.printStackTrace();
+				}
 				life--;
 				if(life == 2) {
 					life1.setVisible(false);

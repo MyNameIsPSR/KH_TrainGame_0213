@@ -52,4 +52,8 @@ public class TimeLimiter extends JPanel{
 
 	}
 	
+	public Timer getTimer1() {
+		return timer1;
+	}
+	
 }
